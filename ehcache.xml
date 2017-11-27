@@ -13,25 +13,7 @@
      />
 
    
-    <cache name="com.hsd.entity.Student"
-        maxElementsInMemory="500"
-        eternal="false"
-        timeToIdleSeconds="300"
-        timeToLiveSeconds="600"
-        overflowToDisk="true"
-     />
-
-   
-    <cache name="com.hsd.entity.HClass"
-        maxElementsInMemory="500"
-        eternal="false"
-        timeToIdleSeconds="300"
-        timeToLiveSeconds="600"
-        overflowToDisk="true"
-     />
-
-   
-    <cache name="com.hsd.entity.Teacher"
+    <cache name="com.gaofeicm.entity.Student"
         maxElementsInMemory="500"
         eternal="false"
         timeToIdleSeconds="300"
