@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<!-- 引用数据库配置 -->
+	<bean id="config" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+		<property name="locations">
+        	<list>
+            	<value>classpath:jdbc.properties</value>
+        	</list>
+    	</property>	
+	</bean>
+	
+	<!-- 创建数据连接池 -->
+	<!-- destroy-method="close" 销毁方法/关闭 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    	<property name="driverClassName" value="${jdbc.driver}" />
+    	<property name="url" value="${jdbc.url}" />
+    	<property name="username" value="${jdbc.username}" />
+    	<property name="password" value="${jdbc.password}" />
+	</bean>
+	
+	<!-- 创建 sqlSessionFactory / 让Spring 管理 mybatis 中的核心对象  SqlSessionFactory-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" autowire="byName"/>
+	
+	 <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->    
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" autowire="byName"/>
+	
+</beans>
